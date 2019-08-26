@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Product implements Serializable {
 
+    private String uuid;
     private String name;
     private String description;
     private String provider;
@@ -48,5 +49,13 @@ public class Product implements Serializable {
 
     public void setUnitOfMeasurement(String unitOfMeasurement) {
         this.unitOfMeasurement = unitOfMeasurement;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }
