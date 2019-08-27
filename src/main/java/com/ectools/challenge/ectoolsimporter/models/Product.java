@@ -39,13 +39,13 @@ public class Product implements Serializable {
         return available;
     }
 
+    public String getUnitOfMeasurement() {
+        return unitOfMeasurement;
+    }
     public void setAvailable(boolean available) {
         this.available = available;
     }
 
-    public String getUnitOfMeasurement() {
-        return unitOfMeasurement;
-    }
 
     public void setUnitOfMeasurement(String unitOfMeasurement) {
         this.unitOfMeasurement = unitOfMeasurement;
@@ -57,5 +57,17 @@ public class Product implements Serializable {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "uuid='" + uuid + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", provider='" + provider + '\'' +
+                ", available=" + available +
+                ", unitOfMeasurement='" + unitOfMeasurement + '\'' +
+                '}';
     }
 }
