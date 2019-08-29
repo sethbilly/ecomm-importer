@@ -3,6 +3,7 @@ package com.ectools.challenge.ectoolsimporter.api;
 import com.ectools.challenge.ectoolsimporter.models.Product;
 import com.ectools.challenge.ectoolsimporter.utils.CsvJsonConverter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,12 +18,11 @@ public class ImportController {
     /**
      * Using the JMS broker to send message to all listeners
      */
-    @Autowired
-    private JmsTemplate jmsTemplate;
+    @Autowired private JmsTemplate jmsTemplate;
 
     @PostMapping("/import-csv")
     @ResponseBody
-    public String serializeCsvToJson(
+    public String importCsv(
             @RequestParam(value = "file") MultipartFile csv) {
         try {
             byte[] bytes = csv.getBytes();
@@ -31,6 +31,10 @@ public class ImportController {
                 return "Error occurred parsing csv file, upload not successful";
             }
             jmsTemplate.convertAndSend("ProductTransactionQueue", productList);
+//            for(Product product : productList){
+//                jmsTemplate.convertAndSend("ProductTransactionQueue", product);
+//            }
+
         } catch (IOException e) {
 
             e.printStackTrace();
