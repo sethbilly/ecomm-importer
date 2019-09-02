@@ -8,7 +8,7 @@ public class Product implements Serializable {
     private String name;
     private String description;
     private String provider;
-    private boolean available;
+    private String available;
     private String unitOfMeasurement;
 
     public String getName() {
@@ -35,18 +35,9 @@ public class Product implements Serializable {
         this.provider = provider;
     }
 
-    public boolean isAvailable() {
-        return available;
-    }
-
     public String getUnitOfMeasurement() {
         return unitOfMeasurement;
     }
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
-
     public void setUnitOfMeasurement(String unitOfMeasurement) {
         this.unitOfMeasurement = unitOfMeasurement;
     }
@@ -57,6 +48,14 @@ public class Product implements Serializable {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public String getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(String available) {
+        this.available = available;
     }
 
     @Override

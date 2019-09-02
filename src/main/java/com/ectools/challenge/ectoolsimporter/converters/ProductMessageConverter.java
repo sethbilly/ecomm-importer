@@ -1,5 +1,6 @@
-package com.ectools.challenge.ectoolsimporter.models;
+package com.ectools.challenge.ectoolsimporter.converters;
 
+import com.ectools.challenge.ectoolsimporter.models.Product;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,7 +22,8 @@ import java.util.Map;
 public class ProductMessageConverter implements MessageConverter {
 
     private static final Logger log = LoggerFactory.getLogger(ProductMessageConverter.class);
-    ObjectMapper objectMapper;
+
+    private ObjectMapper objectMapper;
 
     public ProductMessageConverter() {
         objectMapper = new ObjectMapper();
@@ -50,7 +52,7 @@ public class ProductMessageConverter implements MessageConverter {
 
         List<Product> products = null;
         try {
-            products = objectMapper.readValue(payLoad, new TypeReference<Map<String, Product>>(){});
+            products = objectMapper.readValue(payLoad, new TypeReference<Map<String,Product>>(){});
         } catch (IOException e) {
             log.error("Error converting to Product", e);
         }

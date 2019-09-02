@@ -11,7 +11,7 @@ import java.util.List;
  * This class converts each csv line to a product model
  * Reads each new line as a new product model
  */
-public class CsvJsonConverter {
+public class CsvProcessor {
     /**
      * @param file
      * @return List of products from parsing csv file
@@ -31,7 +31,7 @@ public class CsvJsonConverter {
                     product.setName(data[1]);
                     product.setDescription(data[2]);
                     product.setProvider(data[3]);
-                    product.setAvailable(Boolean.valueOf(data[4]));
+                    product.setAvailable(data[4]);
                     product.setUnitOfMeasurement(data[5]);
                     products.add(product);
                 }
